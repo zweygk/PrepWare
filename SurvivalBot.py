@@ -57,6 +57,12 @@ class SurvivalBot:
     def get_meal_combinations(self, df, r):
         return list(itertools.combinations(df.columns.values, r))
         
+    def any_gramcoef_bigger_than_remaining_weight(self, items, coefs):
+        l = []
+        for i, item in enumerate(items):
+            l.append((self.df.loc[item]['weight_grams'] * self.df.loc[item]['item_count']) < coefs[i]*100)
+        return (True in l)
+
     def compute_optimal_meal(self, minimumIntakeObj, nItems=2):
         print('Bzzzz. Computing optimal meal using Lasso objective.')
         
@@ -74,7 +80,7 @@ class SurvivalBot:
             X = df_[list(combo)]
             reg = Lasso(positive=True, alpha=0.001).fit(X, y)
             goodness = reg.score(X, y)
-            if goodness > score:
+            if goodness > score and self.any_gramcoef_bigger_than_remaining_weight(combo, reg.coef_) == False:
                 score = goodness
                 coef = reg.coef_
                 best_combo = combo

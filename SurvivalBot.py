@@ -29,7 +29,7 @@ class SurvivalBot:
     """SurvivalBot is your best friend when SHTF"""
     
     def __init__(self, csvpath):
-        self.df = pd.read_csv('survival.csv', sep=';').set_index('item')
+        self.df = pd.read_csv(csvpath, sep=';').set_index('item')
         self.mappings = NourishmentColumnMappings()
             
     def get_sum(self, nourishment, consumed = False):

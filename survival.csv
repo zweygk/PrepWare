@@ -1,0 +1,32 @@
+item;type;item_count;portion_count;weight_grams;kcal_per_100g;grams_protein_per_100g;grams_sugar_per_100g;grams_carbohydrates_per_100g;grams_fat_per_100g;best_before;consumed
+Heinz Chili Beans in spicy tomato sauce;beans;4;;390;91;4.9;6.9;15.1;0.3;01.07.2020;FALSE
+Jalostaja Reilusti Lihaisa Hernekeitto;beans;2;;435;130;7;0.9;12;4.9;30.01.2024;FALSE
+Jalostaja Perinteinen Hernekeitto;beans;1;;520;130;6.1;0.6;15;4;12.12.2023;FALSE
+Bonduelle Punaiset Kidneypavut;beans;1;;250;111;8.3;0.5;15.2;0.5;31.05.2020;FALSE
+K-menu Naudan- ja sianliha;meat;4;;400;270;17;0.2;3.6;21;10.12.2023;FALSE
+Riipisen Poronlihaa;meat;2;;400;124;17;0.2;2.7;12;21.05.2022;FALSE
+Pirkka Lihapyörykät ruskeassa kastikkeessa;meat;2;;400;120;6.3;2.9;9.2;6.3;09.07.2023;FALSE
+Pirkka Tonnikala Keltainen Thaicurry;fish;2;;170;150;17;4.6;6.2;6.3;25.06.2020;FALSE
+Pirkka Tonnikalapalat Vedessä;fish;1;;150;105;25;0;0;0.5;03.08.2022;FALSE
+Elovena Kaurahiutale;grains;1;;1000;370;14;1.2;55;8;30.11.2020;FALSE
+Myllyn Paras Riisihiutale;grains;1;;700;350;6;0.4;79;0.7;30.01.2021;FALSE
+Pirkka Pitkäjyväinen Riisi;grains;1;;1000;350;7.4;0.5;76;1.7;01.06.2021;FALSE
+LineaVerde Whole Wheat Couscous;grains;1;;500;338;12;3;65;1.5;05.08.2021;FALSE
+LineaVerde Classic Medium Couscous;grains;1;;500;350;12;2.5;70;1.5;02.08.2021;FALSE
+Myllyn Paras Makaroni;grains;7;;400;344;13;2.5;68;1.7;09.02.2022;FALSE
+Pirkka Tomaattimurska;sauce;2;;500;32;1;4;6;0.2;30.09.2021;FALSE
+Pirkka Crunchy Marjainen Muromysli;grains;1;;500;442;8.8;17;63;15;27.10.2020;FALSE
+Pirkka Vihreä Pesto;sauce;2;;185;649;3.4;1.6;4.4;67;05.12.2021;FALSE
+Porin Ruispalat;grains;1;9;540;224;8;4.4;44;1.3;;FALSE
+Vaasan Ruispalat;grains;1;12;;248;10;1.1;43;1.7;;FALSE
+Valio Aamupala Raikas;dairy;1;;400;200;24;0;0;12;06.05.2020;FALSE
+Valio Emmental Punaleima;dairy;1;;350;387;29;0;0;30;14.04.2020;FALSE
+Valio Kahvimaito;dairy;1;;1000;51;3.5;4.8;4.8;2;16.04.2020;FALSE
+Valio Luostari Port Salut;dairy;1;;350;365;25;0;0;29;29.4.2020;FALSE
+Ingman Creamy English Mint;dairy;1;;450;209;2.8;26;28;9.2;01.10.2021;FALSE
+Nescafe Brasero;coffee;1;;100;;;;;;;FALSE
+Jozo Suola ilman jodia;spice;2;;600;;;;;;;FALSE
+Pirkka C-vitamiini 500 mg;supplement;1;90;;;;;;;;FALSE
+Pirkka D3-vitamiini 50 ug;supplement;1;90;;;;;;;;FALSE
+Betax B12 vitamin 1mg;supplement;1;220;;;;;;;;FALSE
+Burana 400 mg;medicine;1;20;;;;;;;;FALSE

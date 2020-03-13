@@ -79,9 +79,12 @@ class SurvivalBot:
                 coef = reg.coef_
                 best_combo = combo
         
+        weights_as_grams = [ 100*w for w in coef ]
+
         print('Done.\n\nOptimal meal combination of {n} items is \n'.format(n = nItems))
         print(best_combo)
         print('With weights {}'.format(coef))
+        print('or grams: {}'.format(weights_as_grams))
         print('Resulting in a R² of {} for fitting the minimum daily intake.'. format(score))
         
         return best_combo, coef, score

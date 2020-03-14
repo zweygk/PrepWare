@@ -63,35 +63,52 @@ class SurvivalBot:
             l.append((self.df.loc[item]['weight_grams'] * self.df.loc[item]['item_count']) < coefs[i]*100)
         return (True in l)
 
-    def compute_optimal_meal(self, minimumIntakeObj, nItems=2):
-        print('Bzzzz. Computing optimal meal using Lasso objective.')
+
+    def n_best_meals(self, n_meals, minimumIntakeObj, nItems=2, itemConstraints = None):
+        print("Bzzz...Computing {nM} most optimal meal combos of {nI} items.\n".format(
+            nM = n_meals, nI = nItems
+        ))
         
         df_ = self.df[list(asdict(self.mappings).values())]
         df_ = df_.transpose().dropna(axis=1, thresh=4)
         
         meal_combos = self.get_meal_combinations(df_, nItems)
         y = list(asdict(minimumIntakeObj).values())
-        
-        score = 0
-        coef = None
-        best_combo = None
-        
-        for combo in meal_combos:
+
+        scores, coefs, combos = [],[],[]
+        len_meal_combos = len(meal_combos)
+
+        for k, combo in enumerate(meal_combos):
             X = df_[list(combo)]
             reg = Lasso(positive=True, alpha=0.001).fit(X, y)
-            goodness = reg.score(X, y)
-            if goodness > score and self.any_gramcoef_bigger_than_remaining_weight(combo, reg.coef_) == False:
-                score = goodness
-                coef = reg.coef_
-                best_combo = combo
-        
-        weights_as_grams = [ 100*w for w in coef ]
+            coef = reg.coef_
+            if self.any_gramcoef_bigger_than_remaining_weight(combo, coef) == False:
+                if itemConstraints:
+                    if set(itemConstraints).union(set(combo)) == set(combo):
+                        scores.append(reg.score(X, y))
+                        coefs.append(coef)
+                        combos.append(combo)
+                else:
+                    scores.append(reg.score(X, y))
+                    coefs.append(coef)
+                    combos.append(combo)
 
-        print('Done.\n\nOptimal meal combination of {n} items is \n'.format(n = nItems))
-        print(best_combo)
-        print('With weights {}'.format(coef))
-        print('or grams: {}'.format(weights_as_grams))
-        print('Resulting in a R² of {} for fitting the minimum daily intake.'. format(score))
-        
-        return best_combo, coef, score
+            if (k+1) % 110 == 0: print("{}%".format(np.round((k+1)*100/len_meal_combos, 1)))
 
+        indices = list(range(len(scores)))
+        indices.sort(key=scores.__getitem__, reverse=True)
+
+        scores_sorted = list(map(scores.__getitem__, indices))
+        coefs_sorted = list(map(coefs.__getitem__, indices))
+        combos_sorted = list(map(combos.__getitem__, indices))
+
+        print('Done.\n\n')
+
+        for i in range(n_meals):
+            weight_as_grams = 100*coefs_sorted[i]
+            print("--------- Meal {} ----------\n".format(i))
+            print('Items: {}'.format(combos_sorted[i]))
+            print("Grams: {}".format(weight_as_grams))
+            print("R²: {}\n\n".format(scores_sorted[i]))
+
+        return combos_sorted, coefs_sorted, scores_sorted
